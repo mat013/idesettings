@@ -1,0 +1,188 @@
+How to sync a fork in github
+  git remote -v								// verify that the upsteram has not been aded
+  git remote add upstream https://github.com/ mockito/mockito		// add the upstream if not available
+  git remote -v								// verify that the upsteram has not been aded
+  git fetch upstream							// get into the repository
+  git checkout master							// switch to master branch
+  git merge upstream/master						// merge from upstream/master to master branch
+
+How to apply a path
+  
+  git apply --stat fix_empty_poster.patch				// check which files will change
+  git apply --check fix_empty_poster.patch				// check if any conflicts
+  git am --signoff < fix_empty_poster.patch				// apply the patch
+
+How to create a tracked remote branch
+
+git remote add grid c:\source\grid					// add remote
+git fetch grid								// fetch from remote
+git checkout -track origin/grid/some_branch				// create tracking branch
+
+How to checkout using proxy
+
+git init
+git remote add origin ssh://git@bitbucket.itcm.oneadr.net:7999/orca/orca-gradle-cucumber-plugin.git
+In the remote section add following entry
+	proxy = ...
+
+git pull
+git checkout master
+
+
+How to reset master to origin/master or create a branch to track a remote branch
+
+git checkout -b master origin/master
+
+How to move a branch aa which was attached to bb to start from cc
+
+
+git checkout cc
+git rebase --onto cc bb aa
+
+
+How to rebase
+
+git rebase -i HEAD~3
+
+How to change head to another place in the commit
+
+git reset --hard <commit>
+
+Reverting file
+  git checkout <filename>
+
+Creating remote
+  git remote add upstream https://github.com/ mockito/mockito
+
+Showing Remotes
+  git remote -v
+
+Sync Fork
+  git fetch upstream
+  git checkout master
+  git merge upstream/master
+    
+Merge from master to branch
+  git checkout feature1
+  git merge master
+	
+Switch Branch
+  git checkout [branch name]
+
+Create & Switch Branch
+  git checkout -b [branch name]
+
+Create a remote branch
+git branch [branch name]
+git push origin [branch name]
+
+Example
+
+git branch feature/OP-123
+git push origin feature/OP-123
+
+Remove a remote branch
+
+git push -d <remote_name> [branch name]
+
+git push -d origin release/fun
+
+Show all local branches
+  git branch
+ 
+Show all branches
+  git branch -a
+  
+Squashing Commits
+  
+Show all changes
+
+  git status -v
+
+Show all branches
+
+  git branch -a
+
+Change the last commit message
+
+  git commit --amend
+  
+Stash 
+
+Seing the changeset of something
+
+Remove last commit from local branch
+
+  git reset --hard HEAD~1
+
+
+Undo last commit and leaves the files ready for checkin
+
+git reset HEAD~
+
+Undo a commit
+
+  git reset --soft HEAD~    
+
+Undo a merge 
+
+  git reset --hard HEAD
+
+Undo add file 
+
+  git reset <file>
+
+Find all changes on a file
+
+  git log - p -- [filename]
+
+How to change your password for git in windows
+
+  Control Panel -> Credential Manager -> Generic Credentials.
+
+Change to file status on a file 
+
+  git update-index --chmod=+x gradlew
+
+Revert everything
+
+  git checkout .
+
+Revert unindex everything
+
+  git reset
+
+Make a file executable
+
+  git update-index --chmod=+x path/to/file
+
+Show entire file from a specific commit
+
+git show REVISION:path/to/file
+
+Show entire file from a specific date
+
+git show HEAD@{2013-02-25}:path/to/file
+
+Prune file
+
+git remote prune origin
+
+The merge conflicts occur when there are disagreeing changes. In that case, your conflicted file will have so-called conflict markers:
+
+Understand 
+<<<<<<< HEAD
+my version
+=======
+the other version
+>>>>>>> deadbeef... This is the tip of the other branch
+Between the <<<<<<< and =======, you will find the version as per the changes in your current branch, relative to the base commit.
+
+Between the ======= and >>>>>>>, you will find the version according to the other branch, relative to the base commit.
+
+How to see if you have unpushed commits on branches
+
+git log --branches --not --remotes
+git log --branches --not --remotes --simplify-by-decoration --decorate --oneline
+
+
