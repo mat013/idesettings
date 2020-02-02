@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+import sys, os, re
+from subprocess import check_output
+
+# Collect the parameters
+commit_msg_filepath = sys.argv[1]
+
+if len(sys.argv) > 2:
+    commit_type = sys.argv[2]
+else: commit_type = ''
+
+if len(sys.argv) > 3:
+    commit_hash = sys.argv[3]
+else:
+    commit_hash = ''
+    print("prepare-commit-msg: File: %s\nType: %s\nHash: %s" % (commit_msg_filepath, commit_type, commit_hash))
+
+# Figure out which branch we're on
+branch = check_output(['git', 'symbolic-ref', '--short', 'HEAD']).strip()
+if branch:
+    branch = branch.decode('utf-8')
+print("prepare-commit-msg: On branch '%s'" % str(branch))
+
+# Populate the commit message with the issue
+#, if there is one
+
+result = re.search('^(?P<type>feature|hotfix|bugfix|release)/(.*/)?(?P<ticket_id>.*-\d*)-(?P<branch_name>.*$)', branch)
+if result:
+     type = result.group('type')
+     issue_number = result.group('ticket_id')
+     branch_name = result.group('branch_name').replace("-", " ")
+     print("prepare-commit-msg: issue number %s" % (issue_number))
+     with open(commit_msg_filepath, 'r+') as f:
+         content = f.read()
+         f.seek(0, 0)
+         f.write("%s: %s, %s" % (issue_number, branch_name, content))
+else:
+  print("Unable to extract ticket id")
