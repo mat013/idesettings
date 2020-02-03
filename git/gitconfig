@@ -1,2 +1,6 @@
+[user]
+	email = 
+	name = 
+
 [init]
        templatedir = ~/sources/idesettings/git-template
