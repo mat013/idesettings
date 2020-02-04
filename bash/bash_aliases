@@ -5,3 +5,6 @@ alias gitundo='git reset HEAD~'
 
 alias gosources='cd ~/sources'
 alias govagrant='cd ~/vagrant'
+
+export VISUAL=vi
+export EDITOR="$VISUAL"
