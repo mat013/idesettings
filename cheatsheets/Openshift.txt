@@ -1,0 +1,21 @@
+oc login -u system:admin
+
+# switch to another project
+oc project myapp
+
+# create
+oc new-project <project_name> --description="<description>" --display-name="<display_name>"
+
+cat build.Dockerfile | oc new-build --name node-container --dockerfile='-'
+oc start-build bc/node-container --follow
+
+oc get BuildConfigs
+
+oc edit buildconfig/node-container
+
+oc get buildconfig/node-container -o=YAML
+
+
+oc logs -f bc/ruby-ex
+
+oc delete project myproject
