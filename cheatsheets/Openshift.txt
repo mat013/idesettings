@@ -1,5 +1,8 @@
 oc login -u system:admin
 
+# starts the web ui
+minishift console
+
 # switch to another project
 oc project myapp
 
@@ -12,8 +15,8 @@ oc new-project first --description="First attempt" --display-name="first_attempt
 oc new-app --docker-image
 
 # Can run this under the same user that can run docker
-oc new-app --docker-image serv1:1.0 --insecure-registry=true
-
+oc new-app --docker-image mat013/serv1:1.0 --insecure-registry=true
+oc new-app --docker-image mat013/serv1:1.0 --insecure-registry=true -l name=hello-world
 
 cat build.Dockerfile | oc new-build --name node-container --dockerfile='-'
 oc start-build bc/node-container --follow
@@ -40,3 +43,16 @@ oc delete all,configmap,pvc,serviceaccount,rolebinding --selector app=serv1
 oc logs -f bc/ruby-ex
 
 oc delete project myproject
+
+# Pushing to docker hub
+docker login --username=<docker id>
+
+docker tag <local-tag> <docker id>/verse_gapminder:firsttry
+
+docker push <docker id>/verse_gapminder
+
+oc get imagestream -o name
+
+
+# import to an imagestream
+oc import-image mat013/serv1:2.0 --confirm
