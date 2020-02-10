@@ -3,11 +3,24 @@ oc login -u system:admin
 # switch to another project
 oc project myapp
 
-# create
+# create a new project a.k.a. namespace
 oc new-project <project_name> --description="<description>" --display-name="<display_name>"
+
+oc new-project first --description="First attempt" --display-name="first_attempt"
+
+# I still do not understand what a application is
+oc new-app --docker-image
+
+# Can run this under the same user that can run docker
+oc new-app --docker-image serv1:1.0 --insecure-registry=true
+
 
 cat build.Dockerfile | oc new-build --name node-container --dockerfile='-'
 oc start-build bc/node-container --follow
+
+
+# Get all resources
+oc get all
 
 oc get BuildConfigs
 
@@ -15,6 +28,14 @@ oc edit buildconfig/node-container
 
 oc get buildconfig/node-container -o=YAML
 
+# Get all for a particular app
+oc get all --selector app=serv1 -o name
+
+# Delete all resources shown by 'oc get all --selector app=serv1 -o name' with selector specified
+oc delete all --selector app=serv1
+
+# Delete all resources which constitue an app
+oc delete all,configmap,pvc,serviceaccount,rolebinding --selector app=serv1
 
 oc logs -f bc/ruby-ex
 
