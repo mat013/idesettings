@@ -44,6 +44,20 @@ oc logs -f bc/ruby-ex
 
 oc delete project myproject
 
+
+# get pods available
+oc get pod
+
+#rollout history
+oc rollout history dc
+
+#rollback
+oc rollout undo dc/
+
+
+# get environment for
+oc set env pod/blog-1-2-vhrmm --list
+
 # Pushing to docker hub
 docker login --username=<docker id>
 
@@ -51,8 +65,25 @@ docker tag <local-tag> <docker id>/verse_gapminder:firsttry
 
 docker push <docker id>/verse_gapminder
 
-oc get imagestream -o name
+# Adding login user as part of the docker group
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
 
+# Tagging an image? can we download it from an external into an internal?!?
+oc tag --source=docker lakshminp/apache:v1 myproject/apache:latest
+
+
+oc get imagestream -o name
 
 # import to an imagestream
 oc import-image mat013/serv1:2.0 --confirm
+# run the same image under different name
+oc new-app serv1:2.0 --name blog-1
+
+# Adding on templates
+minishift addons apply admin-user
+oc login -u system:admin
+oc adm policy add-cluster-role-to-user cluster-admin admin
+oc login -u admin -p admin
+minishift addons apply xpaas
