@@ -21,7 +21,6 @@ oc new-app --docker-image mat013/serv1:1.0 --insecure-registry=true -l name=hell
 cat build.Dockerfile | oc new-build --name node-container --dockerfile='-'
 oc start-build bc/node-container --follow
 
-
 # Get all resources
 oc get all
 
@@ -87,3 +86,11 @@ oc login -u system:admin
 oc adm policy add-cluster-role-to-user cluster-admin admin
 oc login -u admin -p admin
 minishift addons apply xpaas
+
+# port forward
+oc port-forward kafka-0 9092:9092
+
+# see the imagename and creation time
+oc describe deployments <pod>-deployment | egrep \(Creation\|Image\)
+
+
