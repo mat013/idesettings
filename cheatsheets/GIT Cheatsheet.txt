@@ -134,7 +134,7 @@ Undo add file
 
 Find all changes on a file
 
-  git log - p -- [filename]
+  git log -p -- [filename]
 
 How to change your password for git in windows
 
