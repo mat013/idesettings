@@ -1,7 +1,5 @@
 
-#show indexes
-
-# query for single document
+# show indexes
 
 # show only particular fields
 
@@ -9,3 +7,25 @@
 curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/<index>/<type>" -d '
 <json object>
 '
+
+# Upload a single file via curl
+curl -H "Content-Type: application/json" -XPOST "http://<host>/<index>/_doc" -d @somefile.json
+
+curl -H "Content-Type: application/json" -XPOST "http://localhost/myindex/_doc" -d @somefile.json
+
+# query for single document
+
+# Query DSL
+{
+  "query": {
+    "bool": {
+      "should": [
+        { "bool": { "must": [{"term": { "userid": "44138492" }}, {"match": { "realm": "DK" }}]} },
+        { "bool": { "must": [{"term": { "loginname": "44138492" } },
+          {"match": { "realm: "DK" }},
+          {"bool": {"should": [{"exists": {"field": "os"}}, {"exists": {"field": "variant"}}]}}]} }
+
+      ]
+    }
+  }
+}
