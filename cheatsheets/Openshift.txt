@@ -1,3 +1,18 @@
+# Start minishift with a registry
+minishift start --insecure-registry <docker registry hub url>
+
+minishift ssh -- docker info | grep -A3 Insecure
+
+oc create secret docker-registry <secret-name> \
+    --docker-username=<username> \
+    --docker-password=<password> \
+    --docker-email=<e-mail> \
+    --docker-server=<registry-name>
+
+# link secret to 
+oc secrets link serviceaccount/<service-account e.g. default> secrets/<secret-name> --for=pull
+
+
 oc login -u system:admin
 
 # starts the web ui
@@ -20,6 +35,9 @@ oc new-app --docker-image mat013/serv1:1.0 --insecure-registry=true -l name=hell
 
 cat build.Dockerfile | oc new-build --name node-container --dockerfile='-'
 oc start-build bc/node-container --follow
+
+
+
 
 
 # Get all resources

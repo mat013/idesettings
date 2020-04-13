@@ -1,0 +1,11 @@
+
+#show indexes
+
+# query for single document
+
+# show only particular fields
+
+# uploading json object
+curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/<index>/<type>" -d '
+<json object>
+'
