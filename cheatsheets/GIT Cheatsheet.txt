@@ -7,7 +7,7 @@ How to sync a fork in github
   git merge upstream/master						// merge from upstream/master to master branch
 
 How to apply a path
-  
+
   git apply --stat fix_empty_poster.patch				// check which files will change
   git apply --check fix_empty_poster.patch				// check if any conflicts
   git am --signoff < fix_empty_poster.patch				// apply the patch
@@ -61,11 +61,11 @@ Sync Fork
   git fetch upstream
   git checkout master
   git merge upstream/master
-    
+
 Merge from master to branch
   git checkout feature1
   git merge master
-	
+
 Switch Branch
   git checkout [branch name]
 
@@ -89,12 +89,12 @@ git push -d origin release/fun
 
 Show all local branches
   git branch
- 
+
 Show all branches
   git branch -a
-  
+
 Squashing Commits
-  
+
 Show all changes
 
   git status -v
@@ -106,8 +106,8 @@ Show all branches
 Change the last commit message
 
   git commit --amend
-  
-Stash 
+
+Stash
 
 Seing the changeset of something
 
@@ -122,13 +122,13 @@ git reset HEAD~
 
 Undo a commit
 
-  git reset --soft HEAD~    
+  git reset --soft HEAD~
 
-Undo a merge 
+Undo a merge
 
   git reset --hard HEAD
 
-Undo add file 
+Undo add file
 
   git reset <file>
 
@@ -140,7 +140,7 @@ How to change your password for git in windows
 
   Control Panel -> Credential Manager -> Generic Credentials.
 
-Change to file status on a file 
+Change to file status on a file
 
   git update-index --chmod=+x gradlew
 
@@ -170,7 +170,7 @@ git remote prune origin
 
 The merge conflicts occur when there are disagreeing changes. In that case, your conflicted file will have so-called conflict markers:
 
-Understand 
+Understand
 <<<<<<< HEAD
 my version
 =======
@@ -185,4 +185,5 @@ How to see if you have unpushed commits on branches
 git log --branches --not --remotes
 git log --branches --not --remotes --simplify-by-decoration --decorate --oneline
 
-
+Commit an empty commit
+git commit --allow-empty -m "Trigger notification"
