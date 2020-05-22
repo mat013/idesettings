@@ -115,7 +115,6 @@ Remove last commit from local branch
 
   git reset --hard HEAD~1
 
-
 Undo last commit and leaves the files ready for checkin
 
 git reset HEAD~
