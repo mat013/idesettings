@@ -3,6 +3,9 @@ alias ggg='gitk &'
 alias gitchanges='git log -p --'
 alias gitundo='git reset HEAD~'
 
+alias triggerbuild='git commit --allow-empty -m "Trigger notification" && git push'
+alias gitmergetrial=git --no-commit --no-ff
+
 alias gosources='cd ~/sources'
 alias govagrant='cd ~/vagrant'
 
