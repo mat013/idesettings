@@ -10,5 +10,7 @@ xargs -a output.txt -0 ./m
 # take each item in output.txt and execute m with $line as argument
 cat output.txt | while read line; do ./m $line; done
 
+echo $1
+
 # get each item on each line and remove the trailing /
 ls -d */ | sed 's/.$//' > output.txt
