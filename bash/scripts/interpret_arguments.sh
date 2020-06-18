@@ -8,8 +8,8 @@ eval set -- "$OPTS"
 # default arguments
 USERNAME=$USER
 PASSWORD=
-PROJECT=osm2
-HOST="https://ocpt.ccta.dk:8443"
+PROJECT=project1
+HOST="https://localhost:8443"
 TIMEOUT=0
 POD=
 PORT=
