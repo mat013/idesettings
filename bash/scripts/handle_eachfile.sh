@@ -1,3 +1,7 @@
+# get all folders on each line
+find $(pwd) -type d -maxdepth 1
+find $(pwd) -maxdepth 1 -type d -printf '%P\n' > m.txt
+
 # creates a file for each line in m.txt
 xargs -0 mkdir < <(tr \\n \\0 <m.txt)
 
