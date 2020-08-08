@@ -4,3 +4,7 @@
 
 [init]
        templatedir = ~/sources/idesettings/git-template
+
+[alias]
+	exec = "!exec "
+
