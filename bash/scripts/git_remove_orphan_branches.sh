@@ -11,7 +11,7 @@ cat .to-remove
 
 read -p 'Continue? Yes if you want to continue: '
 
-if [[ $REPLY == 'yes' ]];
+if [[ $REPLY == 'Yes' ]];
 then
   grep ".*" .to-remove | cut -c 3- | awk '{print $1}' | xargs git branch -D
 fi
