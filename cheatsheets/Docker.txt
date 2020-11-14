@@ -1,0 +1,23 @@
+run image
+
+docker run -d -p 80:80 -e <environment_name=environment_value> --name=<container name> <image> 
+
+docker run -d -p 80:80 my_image service nginx start
+
+docker run a program in an existing container 
+
+docker exec -it 
+
+docker exec -it <container name> <command> <arguments>
+
+docker exec -it ubuntu_bash bash
+
+
+Remove not running containers
+
+docker system prune
+
+Removing orphan images
+
+docker image prune -a 
+
