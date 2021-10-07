@@ -2,6 +2,11 @@ alias gg='git gui &'
 alias ggg='gitk &'
 alias gitchanges='git log -p --'
 alias gitundo='git reset HEAD~'
+alias gitmergetrial='git --no-commit --no-ff'
+alias gitbranchcleanup='git_remove_orphan_branches.sh'
+alias gitp='lint && git push'
+alias gitmessages='git log | grep eang -A 7 -B 2 | more'
+
 
 alias triggerbuild='git commit --allow-empty -m "Trigger notification" && git push'
 alias gitmergetrial='git --no-commit --no-ff'
