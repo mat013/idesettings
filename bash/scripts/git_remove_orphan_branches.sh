@@ -6,7 +6,8 @@ echo fetching all
 git fetch --all --prune
 
 echo Fetching branch with missing remotes
-git branch -vv | grep ": gone\]" > .to-remove && vim .to-remove
+git branch -vv | grep ": gone\]" > .to-remove
+vi .to-remove
 cat .to-remove
 
 read -p 'Continue? Yes if you want to continue: '
