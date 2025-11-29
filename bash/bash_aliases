@@ -1,3 +1,7 @@
+
+alias G='git branch'
+alias GM='git log | grep eang -A 7 -B 2 | more'
+alias GC='git gc && git prune && git remote prune origin'
 alias GG='git gui &'
 alias GGG='gitk &'
 alias CC='lintcode &'
