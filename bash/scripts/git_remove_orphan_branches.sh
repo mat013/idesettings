@@ -16,3 +16,4 @@ if [[ $REPLY == 'Yes' ]];
 then
   grep ".*" .to-remove | cut -c 3- | awk '{print $1}' | xargs git branch -D
 fi
+rm .to-remove
