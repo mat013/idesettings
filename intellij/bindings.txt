@@ -1,0 +1,25 @@
+[CTRL + h][f] = Find
+[CTRL + h][CTRL + f] = Find in path
+[CTRL + h][r] = replace
+
+[CTRL + g][f] = Find usages
+[CTRL + g][w] = Find usages in file
+
+[CTRL + l][l] = Goto line
+[CTRL + l][k] = Kill line
+[CTRL + l][j] = Duplicate line
+
+[CTRL + q][CTRL + q] = Show Settings
+
+[f3]         = Find Next
+[shift + f3] = Find Previous
+
+[CTRL + r][i] = Inline
+[CTRL + r][r] = Rename
+[CTRL + r][c] = Constant
+
+[SHIFT + CTRL + r] = Reformat Code
+
+
+[CTRL + ,][,] = JumpToLastChange
+[CTRL + .][].] = JumpToNextChange
