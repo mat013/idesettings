@@ -1,6 +1,7 @@
 [CTRL + h][f] = Find
 [CTRL + h][CTRL + f] = Find in path
-[CTRL + h][r] = replace
+[CTRL + h][r] = Replace
+[CTRL + h][CTRL + r] = Replace in path
 
 [CTRL + g][f] = Find usages
 [CTRL + g][w] = Find usages in file
@@ -19,7 +20,6 @@
 [CTRL + r][c] = Constant
 
 [SHIFT + CTRL + r] = Reformat Code
-
 
 [CTRL + ,][,] = JumpToLastChange
 [CTRL + .][].] = JumpToNextChange
