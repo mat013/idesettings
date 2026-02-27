@@ -23,3 +23,8 @@
 
 [CTRL + ,][,] = JumpToLastChange
 [CTRL + .][].] = JumpToNextChange
+
+
+[ALT + SHIFT + O] = Optimize imports
+[ALT + SHIFT + F] = Format
+
