@@ -11,18 +11,26 @@
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "ctrl+h ctrl+h",
-        "command": "editor.action.startFindReplaceAction",
+        "key": "ctrl+f",
+        "command": "-actions.find",
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "ctrl+h ctrl+f",
+        "key": "ctrl+h f",
         "command": "actions.find",
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "ctrl+f",
-        "command": "-actions.find",
+        "key": "ctrl+h r",
+        "command": "editor.action.startFindReplaceAction",
         "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "ctrl+h ctrl+r",
+        "command": "workbench.action.replaceInFiles"
+    },
+    {
+        "key": "ctrl+h ctrl+f",
+        "command": "workbench.action.findInFiles"
     }
 ]
