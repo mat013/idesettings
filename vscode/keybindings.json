@@ -24,5 +24,45 @@
         "key": "ctrl+f",
         "command": "-actions.find",
         "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+q ctrl+q",
+        "command": "workbench.action.openSettings"
+    },
+    {
+        "key": "ctrl+[Comma]",
+        "command": "-workbench.action.openSettings"
+    },
+    {
+        "key": "ctrl+q ctrl+q",
+        "command": "workbench.action.openAntigravitySettings"
+    },
+    {
+        "key": "ctrl+[Comma]",
+        "command": "-workbench.action.openAntigravitySettings"
+    },
+    {
+        "key": "ctrl+[Comma] ctrl+[Comma]",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "ctrl+alt+-",
+        "command": "-workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "ctrl+[Period] ctrl+[Period]",
+        "command": "workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "-workbench.action.navigateForward",
+        "when": "canNavigateForward"
     }
 ]
