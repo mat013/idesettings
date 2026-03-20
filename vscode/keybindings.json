@@ -64,5 +64,31 @@
         "key": "ctrl+shift+-",
         "command": "-workbench.action.navigateForward",
         "when": "canNavigateForward"
+    },
+    {
+        "key": "ctrl+shift+k",
+        "command": "-editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+l ctrl+k",
+        "command": "editor.action.deleteLines"
+    },
+    {
+        "key": "ctrl+shift+alt+down",
+        "command": "-editor.action.copyLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+l ctrl+j",
+        "command": "editor.action.copyLinesDownAction"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "-workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+l ctrl+l",
+        "command": "workbench.action.gotoLine"
     }
 ]
