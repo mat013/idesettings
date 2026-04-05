@@ -11,7 +11,7 @@
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "ctrl+h ctrl+h",
+        "key": "ctrl+h ctrl+r",
         "command": "editor.action.startFindReplaceAction",
         "when": "editorFocus || editorIsOpen"
     },
@@ -90,5 +90,19 @@
     {
         "key": "ctrl+l ctrl+l",
         "command": "workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+alt+i",
+        "command": "-workbench.action.chat.open",
+        "when": "!chatSetupDisabled && !chatSetupHidden"
+    },
+    {
+        "key": "ctrl+alt+i",
+        "command": "-workbench.panel.chat",
+        "when": "workbench.panel.chat.view.copilot.active"
+    },
+    {
+        "key": "ctrl+alt+i",
+        "command": "workbench.view.extension.claude-sidebar-secondary"
     }
 ]
