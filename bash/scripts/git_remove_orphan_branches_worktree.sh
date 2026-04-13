@@ -31,16 +31,29 @@ echo "------------------------------------"
 cat "$ORPHAN_FILE"
 echo "------------------------------------"
 echo ""
-read -r -p "Skriv YES for at slette alle lokalt: " CONFIRM
+read -r -p "Skriv ALL for at slette alle, SOME for at vælge, eller andet for at annullere: " CONFIRM
 
-if [ "$CONFIRM" = "YES" ]; then
-    while IFS= read -r BRANCH; do
+if [ "$CONFIRM" = "ALL" ]; then
+    while IFS= read -r BRANCH <&3; do
         git branch -d "$BRANCH"
         echo "Slettet: $BRANCH"
-    done < "$ORPHAN_FILE"
-    rm "$ORPHAN_FILE"
+    done 3< "$ORPHAN_FILE"
     echo "Færdig."
+
+elif [ "$CONFIRM" = "SOME" ]; then
+    while IFS= read -r BRANCH <&3; do
+        read -r -p "Slet '$BRANCH'? (y/n): " CHOICE
+        if [ "$CHOICE" = "y" ]; then
+            git branch -d "$BRANCH"
+            echo "Slettet: $BRANCH"
+        else
+            echo "Sprunget over: $BRANCH"
+        fi
+    done 3< "$ORPHAN_FILE"
+    echo "Færdig."
+
 else
     echo "Ingen branches slettet."
-    rm "$ORPHAN_FILE"
 fi
+
+rm "$ORPHAN_FILE"
