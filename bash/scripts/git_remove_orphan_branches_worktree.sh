@@ -5,8 +5,16 @@ ORPHAN_FILE=".orphan_branches"
 
 while IFS= read -r LINE; do
     BRANCH=$(echo "$LINE" | awk '{print $1}')
+
+    # Fang branches hvor remote er slettet (gone)
+    if echo "$LINE" | grep -q '\[.*: gone\]'; then
+        echo "$BRANCH" >> "$ORPHAN_FILE"
+        continue
+    fi
+
     UPSTREAM=$(echo "$LINE" | grep -oP '\[origin/\K[^\]:]+')
 
+    # Fang branches uden remote eller hvor remote ikke matcher
     if [ -z "$UPSTREAM" ] || [ "$UPSTREAM" != "$BRANCH" ]; then
         echo "$BRANCH" >> "$ORPHAN_FILE"
     fi
@@ -30,7 +38,9 @@ if [ "$CONFIRM" = "YES" ]; then
         git branch -d "$BRANCH"
         echo "Slettet: $BRANCH"
     done < "$ORPHAN_FILE"
+    rm "$ORPHAN_FILE"
     echo "Færdig."
 else
     echo "Ingen branches slettet."
+    rm "$ORPHAN_FILE"
 fi
