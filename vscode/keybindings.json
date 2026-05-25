@@ -11,12 +11,12 @@
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "ctrl+h ctrl+r",
+        "key": "ctrl+h r",
         "command": "editor.action.startFindReplaceAction",
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "ctrl+h ctrl+f",
+        "key": "ctrl+h f",
         "command": "actions.find",
         "when": "editorFocus || editorIsOpen"
     },
@@ -203,7 +203,42 @@
         "command": "-workbench.action.quickOpen"
     },
     {
-        "key": "ctrl+h ctrl+h",
+        "key": "ctrl+h ctrl+f",
         "command": "workbench.action.findInFiles"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "-workbench.action.findInFiles",
+        "when": "!isSessionsWindow"
+    },
+    {
+        "key": "ctrl+h ctrl+r",
+        "command": "workbench.action.replaceInFiles",
+        "when": "!isSessionsWindow"
+    },
+    {
+        "key": "ctrl+shift+h",
+        "command": "-workbench.action.replaceInFiles",
+        "when": "!isSessionsWindow"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-filesExplorer.findInFolder",
+        "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-search.action.restrictSearchToFolder",
+        "when": "folderMatchWithResourceFocus && searchViewletVisible"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+        "key": "ctrl+shift+i",
+        "command": "-editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
     }
 ]
