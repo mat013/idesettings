@@ -1,0 +1,16 @@
+[global_config]
+  ask_before_closing = never
+[keybindings]
+  split_horiz = <Alt>underscore
+  split_vert = <Alt>question
+[profiles]
+  [[default]]
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
