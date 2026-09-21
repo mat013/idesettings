@@ -1,0 +1,87 @@
+# Historie
+HISTSIZE=1000
+SAVEHIST=2000
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+
+# Prompt
+PROMPT='%~ %# '
+
+# PATH
+path+=($HOME/.local/bin $HOME/sources/idesettings/bash/scripts)
+
+# Editor
+export VISUAL=vi
+export EDITOR="$VISUAL"
+
+# Aliases — navigation
+alias gosources='cd ~/sources'
+alias govagrant='cd ~/vagrant'
+alias CD='cd ~/sources/finance_strategy'
+
+# Aliases — ls
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Aliases — git
+alias G='git branch'
+alias gg='git gui &'
+alias ggg='gitk &'
+alias GG='git gui &'
+alias GGG='gitk &'
+alias gitchanges='git log -p --'
+alias gitundo='git reset HEAD~'
+alias gitmergetrial='git merge --no-commit --no-ff'
+alias gitbranchcleanup='git_remove_orphan_branches.sh'
+alias gitp='lint && git push'
+alias gitmessages='git log | grep eang -A 7 -B 2 | more'
+alias gitclean='git gc && git prune && git remote prune origin'
+alias triggerbuild='git commit --allow-empty -m "Trigger notification" && git push'
+
+# Aliases — tools
+alias CC='lintcode &'
+alias TT='nvim'
+alias CL='claude --resume 3d56d6cd-1fa7-42aa-8244-50f587b5b482'
+
+# Aliases — notifications
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# SSH agent
+env=~/.ssh/agent.env
+agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
+agent_start () {
+    (umask 077; ssh-agent >| "$env")
+    . "$env" >| /dev/null ; }
+agent_load_env
+agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
+if [ ! "$SSH_AUTH_SOCK" ] || [ $agent_run_state = 2 ]; then
+    agent_start
+    ssh-add
+elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
+    ssh-add
+fi
+unset env
+
+# Plugins
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# just completions
+command -v just >/dev/null && source <(just --completions zsh)
+
+# Python venv
+if [ -d ".venv" ] && [ -f ".venv/bin/activate" ] && [ -f ".venv/trusted" ]; then
+    source .venv/bin/activate
+fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
